@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to top, #000000, #434343);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+        }
+
+        h1, p {
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin: 0;
+            opacity: 0;
+            animation: slideIn 2s ease-out forwards;
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation-delay: 0.5s;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            animation-delay: 1s;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            border-radius: 50%;
+            animation: fall linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy New Year 2025! 🎉</h1>
+    <p>May your new year be decorated with sweet memories, wonderful days and memorable nights.</p>
+
+    <script>
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+
+            const randomX = Math.random() * window.innerWidth;
+            const randomColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+
+            confetti.style.left = `${randomX}px`;
+            confetti.style.backgroundColor = randomColor;
+            confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 5000);
+        }
+
+        setInterval(createConfetti, 100);
+    </script>
+</body>
+</html>
